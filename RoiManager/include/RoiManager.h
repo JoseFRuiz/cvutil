@@ -30,7 +30,7 @@ along with cvutil; see the file COPYING.  If not, see
 #ifndef ROIMANAGER_H
 #define ROIMANAGER_H
 
-#include <QtWidgets/QtWidgets>
+#include <QtWidgets>
 #include <opencv2/opencv.hpp>
 
 #include <iostream>

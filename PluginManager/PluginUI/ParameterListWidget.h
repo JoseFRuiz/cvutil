@@ -32,7 +32,7 @@ along with cvutil; see the file COPYING.  If not, see
 
 //#include "ImageProcessor.h"
 //#include "ParameterListModel.h"
-#include <QtWidgets/QtWidgets>
+#include <QtWidgets>
 
 #include "../include/PluginInterfaces.h"
 #include "qxtspanslider.h"

@@ -31,7 +31,7 @@
 
 #define QXTSPANSLIDER_H
 
-#include <QtWidgets/QSlider>
+#include <QSlider>
 //#include "qxtnamespace.h"
 //#include "qxtglobal.h"
 

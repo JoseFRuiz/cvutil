@@ -31,8 +31,8 @@ along with cvutil; see the file COPYING.  If not, see
 #define PLUGINMANAGER_H
 
 //#include <cvutil.h>
-#include <QtWidgets/QtWidgets>
-#include <QtWidgets/qlayout.h>
+#include <QtWidgets>
+#include <QLayout>
 
 #ifdef WIN32
 #if (!defined PLAPI)

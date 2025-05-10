@@ -31,8 +31,8 @@
 
 #define QXTSPANSLIDER_P_H
 
-#include <QtWidgets/QStyle>
-#include <QtCore/QObject>
+#include <QStyle>
+#include <QObject>
 #include "qxtspanslider.h"
 
 QT_FORWARD_DECLARE_CLASS(QStylePainter)

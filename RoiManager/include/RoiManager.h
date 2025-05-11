@@ -32,11 +32,10 @@ along with cvutil; see the file COPYING.  If not, see
 
 #include "PluginAPI.h"
 #include "PluginInterfaces.h"
-#include <QWidget>
-#include <QMatrix>
-#include <QTransform>
-#include <QGraphicsItem>
-#include <QGraphicsRectItem>
+#include <QtWidgets/QWidget>
+#include <QtGui/QTransform>
+#include <QtWidgets/QGraphicsItem>
+#include <QtWidgets/QGraphicsRectItem>
 #include <opencv2/opencv.hpp>
 
 #include <iostream>
@@ -161,8 +160,8 @@ public:
     QPointF getROIShear(QGraphicsRectItem* roi);
     void setROITranslation(QGraphicsRectItem* roi, qreal dx, qreal dy);
     QPointF getROITranslation(QGraphicsRectItem* roi);
-    void setROIMatrix(QGraphicsRectItem* roi, QMatrix matrix);
-    QMatrix getROIMatrix(QGraphicsRectItem* roi);
+    void setROIMatrix(QGraphicsRectItem* roi, QTransform matrix);
+    QTransform getROIMatrix(QGraphicsRectItem* roi);
     void setROIItemTransform(QGraphicsRectItem* roi, QGraphicsTransform* transform);
     QGraphicsTransform* getROIItemTransform(QGraphicsRectItem* roi);
     void setROIItemFlags(QGraphicsRectItem* roi, QGraphicsItem::GraphicsItemFlags flags);

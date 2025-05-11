@@ -70,7 +70,6 @@ template <> constexpr inline auto PluginManager::qt_create_metaobjectdata<qt_met
         "pluginTranslationChanged",
         "translation",
         "pluginMatrixChanged",
-        "QMatrix",
         "matrix",
         "pluginItemTransformChanged",
         "QGraphicsTransform*",
@@ -156,60 +155,60 @@ template <> constexpr inline auto PluginManager::qt_create_metaobjectdata<qt_met
             { QMetaType::QString, 3 }, { QMetaType::QPointF, 30 },
         }}),
         // Signal 'pluginMatrixChanged'
-        QtMocHelpers::SignalData<void(QString, QMatrix)>(31, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { 0x80000000 | 32, 33 },
+        QtMocHelpers::SignalData<void(QString, QTransform)>(31, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::QTransform, 32 },
         }}),
         // Signal 'pluginItemTransformChanged'
-        QtMocHelpers::SignalData<void(QString, QGraphicsTransform *)>(34, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { 0x80000000 | 35, 20 },
+        QtMocHelpers::SignalData<void(QString, QGraphicsTransform *)>(33, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { 0x80000000 | 34, 20 },
         }}),
         // Signal 'pluginItemFlagsChanged'
-        QtMocHelpers::SignalData<void(QString, QGraphicsItem::GraphicsItemFlags)>(36, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { 0x80000000 | 37, 38 },
+        QtMocHelpers::SignalData<void(QString, QGraphicsItem::GraphicsItemFlags)>(35, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { 0x80000000 | 36, 37 },
         }}),
         // Signal 'pluginItemCacheModeChanged'
-        QtMocHelpers::SignalData<void(QString, QGraphicsItem::CacheMode)>(39, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { 0x80000000 | 40, 41 },
+        QtMocHelpers::SignalData<void(QString, QGraphicsItem::CacheMode)>(38, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { 0x80000000 | 39, 40 },
         }}),
         // Signal 'pluginItemBoundingRegionGranularityChanged'
-        QtMocHelpers::SignalData<void(QString, qreal)>(42, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::QReal, 43 },
+        QtMocHelpers::SignalData<void(QString, qreal)>(41, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::QReal, 42 },
         }}),
         // Signal 'pluginItemAcceptDropsChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(44, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(43, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
         // Signal 'pluginItemAcceptHoverEventsChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(46, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(45, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
         // Signal 'pluginItemAcceptTouchEventsChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(47, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(46, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
         // Signal 'pluginItemAcceptsHoverEventsChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(48, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(47, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
         // Signal 'pluginItemAcceptsTouchEventsChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(49, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(48, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
         // Signal 'pluginItemAcceptsDropsChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(50, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(49, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
         // Signal 'pluginItemAcceptsHoverChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(51, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(50, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
         // Signal 'pluginItemAcceptsTouchChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(52, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(51, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
         // Signal 'pluginItemAcceptsDropChanged'
-        QtMocHelpers::SignalData<void(QString, bool)>(53, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 }, { QMetaType::Bool, 45 },
+        QtMocHelpers::SignalData<void(QString, bool)>(52, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::Bool, 44 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -249,7 +248,7 @@ void PluginManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 12: _t->pluginScaleChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QPointF>>(_a[2]))); break;
         case 13: _t->pluginShearChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QPointF>>(_a[2]))); break;
         case 14: _t->pluginTranslationChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QPointF>>(_a[2]))); break;
-        case 15: _t->pluginMatrixChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QMatrix>>(_a[2]))); break;
+        case 15: _t->pluginMatrixChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTransform>>(_a[2]))); break;
         case 16: _t->pluginItemTransformChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QGraphicsTransform*>>(_a[2]))); break;
         case 17: _t->pluginItemFlagsChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QGraphicsItem::GraphicsItemFlags>>(_a[2]))); break;
         case 18: _t->pluginItemCacheModeChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QGraphicsItem::CacheMode>>(_a[2]))); break;
@@ -297,7 +296,7 @@ void PluginManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             return;
         if (QtMocHelpers::indexOfMethod<void (PluginManager::*)(QString , QPointF )>(_a, &PluginManager::pluginTranslationChanged, 14))
             return;
-        if (QtMocHelpers::indexOfMethod<void (PluginManager::*)(QString , QMatrix )>(_a, &PluginManager::pluginMatrixChanged, 15))
+        if (QtMocHelpers::indexOfMethod<void (PluginManager::*)(QString , QTransform )>(_a, &PluginManager::pluginMatrixChanged, 15))
             return;
         if (QtMocHelpers::indexOfMethod<void (PluginManager::*)(QString , QGraphicsTransform * )>(_a, &PluginManager::pluginItemTransformChanged, 16))
             return;
@@ -450,7 +449,7 @@ void PluginManager::pluginTranslationChanged(QString _t1, QPointF _t2)
 }
 
 // SIGNAL 15
-void PluginManager::pluginMatrixChanged(QString _t1, QMatrix _t2)
+void PluginManager::pluginMatrixChanged(QString _t1, QTransform _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 15, nullptr, _t1, _t2);
 }

@@ -203,7 +203,8 @@ void RoiManager::deleteAll()
     roinames.clear();
     classes.clear();
 
-    emit selectedROIDimensionChanged();
+    // No ROI to emit for
+    emit selectedROIDimensionChanged(nullptr, QRectF());
 }
 
 void RoiManager::deleteSelected()
@@ -232,7 +233,8 @@ void RoiManager::deleteSelected()
     roinames = rnames;
     classes = cnames;
 
-    emit selectedROIDimensionChanged();
+    // No ROI to emit for
+    emit selectedROIDimensionChanged(nullptr, QRectF());
 }
 
 void RoiManager::clearSelection()
@@ -245,13 +247,15 @@ void RoiManager::clearSelection()
     
     //gscene->clearSelection();
     //selectedrois.clear();
-    emit selectedROIDimensionChanged();
+    // No ROI to emit for
+    emit selectedROIDimensionChanged(nullptr, QRectF());
 }
 
 void RoiManager::clearSelection(int idx)
 {
     rois[idx]->setSelected(false);
-    emit selectedROIDimensionChanged();
+    // No ROI to emit for
+    emit selectedROIDimensionChanged(nullptr, QRectF());
 }
 
 void RoiManager::selectAll()
@@ -262,7 +266,7 @@ void RoiManager::selectAll()
         emit selectedROIDimensionChanged(roi, roi->rect());
     }
 
-    emit selectedROIDimensionChanged();
+    // No need for additional emit since we already emitted for each ROI
 }
 
 void RoiManager::setROIBorderWidth(double s)
@@ -344,7 +348,7 @@ QGraphicsRectItem * RoiManager::createROI(int x1, int y1, int x2, int y2, qreal 
     {
         int idx = int(rois.size()) - 1;
         rois[idx]->setRect(xpos, ypos, xsize, ysize);
-        emit selectedROIDimensionChanged();
+        emit selectedROIDimensionChanged(rois[idx], rois[idx]->rect());
         //cout << "IsROICreating = continuing\n";
     }
 
@@ -464,7 +468,7 @@ void RoiManager::moveROIs(int x1, int y1, int x2, int y2, qreal w, qreal h)
         }
     }
 
-    emit selectedROIDimensionChanged();
+    // No need for additional emit since we already emitted for each ROI
 }
 
 void RoiManager::resizeROIs(BorderHoverMode m, QRectF hoverrect, vector<QRectF> srois, int x1, int y1, int x2, int y2, qreal w, qreal h)
@@ -561,7 +565,7 @@ void RoiManager::resizeROIs(BorderHoverMode m, QRectF hoverrect, vector<QRectF> 
         }
     }
 
-    emit selectedROIDimensionChanged();
+    // No need for additional emit since we already emitted for each ROI
 }
 
 void RoiManager::deleteList(vector<int> indices)
@@ -593,7 +597,8 @@ void RoiManager::deleteList(vector<int> indices)
     roinames = rnames;
     classes = cnames;
 
-    emit selectedROIDimensionChanged();
+    // No ROI to emit for
+    emit selectedROIDimensionChanged(nullptr, QRectF());
 }
 
 void RoiManager::setX(int x, qreal scenewidth)
@@ -617,7 +622,7 @@ void RoiManager::setX(int x, qreal scenewidth)
         emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
     }
 
-    emit selectedROIDimensionChanged();
+    // No need for additional emit since we already emitted for each ROI
 }
 
 void RoiManager::setY(int y, qreal sceneheight)
@@ -641,7 +646,7 @@ void RoiManager::setY(int y, qreal sceneheight)
         emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
     }
 
-    emit selectedROIDimensionChanged();
+    // No need for additional emit since we already emitted for each ROI
 }
 
 void RoiManager::setWidth(int width, qreal scenewidth)
@@ -659,7 +664,7 @@ void RoiManager::setWidth(int width, qreal scenewidth)
         emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
     }
 
-    emit selectedROIDimensionChanged();
+    // No need for additional emit since we already emitted for each ROI
 }
 
 void RoiManager::setHeight(int height, qreal sceneheight)
@@ -677,7 +682,7 @@ void RoiManager::setHeight(int height, qreal sceneheight)
         emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
     }
 
-    emit selectedROIDimensionChanged();
+    // No need for additional emit since we already emitted for each ROI
 }
 
 void RoiManager::setSelectable(bool on)
@@ -763,7 +768,7 @@ void RoiManager::updateBoundaries(qreal w, qreal h)
         deleteList(dlist);
 
     if (updated)
-        emit selectedROIDimensionChanged();
+        emit selectedROIDimensionChanged(nullptr, QRectF());
 }
 
 std::string RoiManager::getClassName(int idx)

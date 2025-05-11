@@ -31,15 +31,14 @@ along with cvutil; see the file COPYING.  If not, see
 #define PLUGINMANAGER_H
 
 //#include <cvutil.h>
-#include <QWidget>
-#include <QLayout>
-#include <QMatrix>
-#include <QTransform>
-#include <QColor>
-#include <QPen>
-#include <QBrush>
-#include <QGraphicsItem>
-#include <QGraphicsTransform>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLayout>
+#include <QtGui/QTransform>
+#include <QtGui/QColor>
+#include <QtGui/QPen>
+#include <QtGui/QBrush>
+#include <QtWidgets/QGraphicsItem>
+#include <QtWidgets/QGraphicsTransform>
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <vector>
@@ -102,8 +101,8 @@ public:
     QPointF getPluginShear(QString name);
     void setPluginTranslation(QString name, qreal dx, qreal dy);
     QPointF getPluginTranslation(QString name);
-    void setPluginMatrix(QString name, QMatrix matrix);
-    QMatrix getPluginMatrix(QString name);
+    void setPluginMatrix(QString name, QTransform matrix);
+    QTransform getPluginMatrix(QString name);
     void setPluginItemTransform(QString name, QGraphicsTransform* transform);
     QGraphicsTransform* getPluginItemTransform(QString name);
     void setPluginItemFlags(QString name, QGraphicsItem::GraphicsItemFlags flags);
@@ -147,7 +146,7 @@ signals:
     void pluginScaleChanged(QString name, QPointF scale);
     void pluginShearChanged(QString name, QPointF shear);
     void pluginTranslationChanged(QString name, QPointF translation);
-    void pluginMatrixChanged(QString name, QMatrix matrix);
+    void pluginMatrixChanged(QString name, QTransform matrix);
     void pluginItemTransformChanged(QString name, QGraphicsTransform* transform);
     void pluginItemFlagsChanged(QString name, QGraphicsItem::GraphicsItemFlags flags);
     void pluginItemCacheModeChanged(QString name, QGraphicsItem::CacheMode mode);
@@ -178,7 +177,7 @@ private:
     std::map<QString, QPointF> pluginScale;
     std::map<QString, QPointF> pluginShear;
     std::map<QString, QPointF> pluginTranslation;
-    std::map<QString, QMatrix> pluginMatrix;
+    std::map<QString, QTransform> pluginMatrix;
     std::map<QString, QGraphicsTransform*> pluginItemTransform;
     std::map<QString, QGraphicsItem::GraphicsItemFlags> pluginItemFlags;
     std::map<QString, QGraphicsItem::CacheMode> pluginItemCacheMode;

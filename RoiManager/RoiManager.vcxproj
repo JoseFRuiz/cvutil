@@ -137,12 +137,11 @@
       <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" -DROIMANAGER_SOURCE -DWIN32 -DPLUGINMANAGER_SOURCE "$(ProjectDir)include\RoiManager.h" -o "$(ProjectDir)moc_RoiManager.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\RoiManager\bin\$(TargetName).dll*" /Y
-xcopy "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).lib*" /Y
-xcopy "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).exp*" /Y
-xcopy "$(OutputPath)$(TargetName).pdb" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).pdb*" /Y
-xcopy "$(ProjectDir)include\RoiManager.h" "$(OutputPath)..\..\build\RoiManager\include\RoiManager.h*" /Y
-</Command>
+      <Command>%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\RoiManager\bin\$(TargetName).dll*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).lib*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).exp*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).pdb" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).pdb*" /Y
+%SystemRoot%\System32\xcopy.exe "$(ProjectDir)include\RoiManager.h" "$(OutputPath)..\..\build\RoiManager\include\RoiManager.h*" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -193,11 +192,10 @@ xcopy "$(ProjectDir)include\RoiManager.h" "$(OutputPath)..\..\build\RoiManager\i
       <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" -DROIMANAGER_SOURCE -DWIN32 -DPLUGINMANAGER_SOURCE "$(ProjectDir)include\RoiManager.h" -o "$(ProjectDir)moc_RoiManager.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\RoiManager\bin\$(TargetName).dll*" /Y
-xcopy "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).lib*" /Y
-xcopy "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).exp*" /Y
-xcopy "$(ProjectDir)include\RoiManager.h" "$(OutputPath)..\..\build\RoiManager\include\RoiManager.h*" /Y
-</Command>
+      <Command>%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\RoiManager\bin\$(TargetName).dll*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).lib*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\RoiManager\lib\$(TargetName).exp*" /Y
+%SystemRoot%\System32\xcopy.exe "$(ProjectDir)include\RoiManager.h" "$(OutputPath)..\..\build\RoiManager\include\RoiManager.h*" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -33,6 +33,11 @@ along with cvutil; see the file COPYING.  If not, see
 //#include <cvutil.h>
 #include <QtWidgets>
 #include <QLayout>
+#include <opencv2/opencv.hpp>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
 
 #ifdef WIN32
 #if (!defined PLUGINAPI)
@@ -50,51 +55,137 @@ along with cvutil; see the file COPYING.  If not, see
 #include "PluginUI/ParameterListWidget.h"
 #endif
 
-class PLUGINAPI PluginManager
+class PLUGINAPI PluginManager : public QObject
 {
-    PluginManager() {};
-
-    QDir pluginsDir;
-    QStringList pluginfiles;
-    std::vector<std::string> plugin_names;
-    std::vector<IPlugin*> plugins;
-
+    Q_OBJECT
 public:
-    static PluginManager* GetInstance()
-    {
-        static PluginManager instance;
-        return &instance;
-    }
+    PluginManager(QObject *parent = nullptr);
+    ~PluginManager();
 
-    // FIXME - The following is the correct 
-    // functionality.
+    void loadPlugin(QString pluginPath);
+    void unloadPlugin(QString pluginPath);
+    void unloadAllPlugins();
+    std::vector<IPlugin*> getPlugins();
+    IPlugin* getPlugin(QString name);
+    void setPluginUI(QWidget* ui);
+    QWidget* getPluginUI();
+    void setPluginEnabled(QString name, bool enabled);
+    bool isPluginEnabled(QString name);
+    void setPluginVisible(QString name, bool visible);
+    bool isPluginVisible(QString name);
+    void setPluginSelected(QString name, bool selected);
+    bool isPluginSelected(QString name);
+    void setPluginColor(QString name, QColor color);
+    QColor getPluginColor(QString name);
+    void setPluginPen(QString name, QPen pen);
+    QPen getPluginPen(QString name);
+    void setPluginBrush(QString name, QBrush brush);
+    QBrush getPluginBrush(QString name);
+    void setPluginZValue(QString name, qreal z);
+    qreal getPluginZValue(QString name);
+    void setPluginTransform(QString name, QTransform transform);
+    QTransform getPluginTransform(QString name);
+    void setPluginPos(QString name, QPointF pos);
+    QPointF getPluginPos(QString name);
+    void setPluginRotation(QString name, qreal angle);
+    qreal getPluginRotation(QString name);
+    void setPluginScale(QString name, qreal sx, qreal sy);
+    QPointF getPluginScale(QString name);
+    void setPluginShear(QString name, qreal sh, qreal sv);
+    QPointF getPluginShear(QString name);
+    void setPluginTranslation(QString name, qreal dx, qreal dy);
+    QPointF getPluginTranslation(QString name);
+    void setPluginMatrix(QString name, QMatrix matrix);
+    QMatrix getPluginMatrix(QString name);
+    void setPluginItemTransform(QString name, QGraphicsTransform* transform);
+    QGraphicsTransform* getPluginItemTransform(QString name);
+    void setPluginItemFlags(QString name, QGraphicsItem::GraphicsItemFlags flags);
+    QGraphicsItem::GraphicsItemFlags getPluginItemFlags(QString name);
+    void setPluginItemCacheMode(QString name, QGraphicsItem::CacheMode mode);
+    QGraphicsItem::CacheMode getPluginItemCacheMode(QString name);
+    void setPluginItemBoundingRegionGranularity(QString name, qreal granularity);
+    qreal getPluginItemBoundingRegionGranularity(QString name);
+    void setPluginItemAcceptDrops(QString name, bool on);
+    bool getPluginItemAcceptDrops(QString name);
+    void setPluginItemAcceptHoverEvents(QString name, bool on);
+    bool getPluginItemAcceptHoverEvents(QString name);
+    void setPluginItemAcceptTouchEvents(QString name, bool on);
+    bool getPluginItemAcceptTouchEvents(QString name);
+    void setPluginItemAcceptsHoverEvents(QString name, bool on);
+    bool getPluginItemAcceptsHoverEvents(QString name);
+    void setPluginItemAcceptsTouchEvents(QString name, bool on);
+    bool getPluginItemAcceptsTouchEvents(QString name);
+    void setPluginItemAcceptsDrops(QString name, bool on);
+    bool getPluginItemAcceptsDrops(QString name);
+    void setPluginItemAcceptsHover(QString name, bool on);
+    bool getPluginItemAcceptsHover(QString name);
+    void setPluginItemAcceptsTouch(QString name, bool on);
+    bool getPluginItemAcceptsTouch(QString name);
+    void setPluginItemAcceptsDrop(QString name, bool on);
+    bool getPluginItemAcceptsDrop(QString name);
 
-    // If the path is full file path, then only 
-    // the plugin is loaded. If the the path is 
-    // a directory, all the plugins in the path 
-    // are loaded. If the path is empty, then the 
-    // function will look for the 'plugins' folder
-    // in the application directory.
-    void Load(std::string path = "");
-    
-    // Return all plugins. 
-    std::vector<IPlugin *> GetPlugins();
+signals:
+    void pluginLoaded(QString name);
+    void pluginUnloaded(QString name);
+    void pluginEnabled(QString name, bool enabled);
+    void pluginVisible(QString name, bool visible);
+    void pluginSelected(QString name, bool selected);
+    void pluginColorChanged(QString name, QColor color);
+    void pluginPenChanged(QString name, QPen pen);
+    void pluginBrushChanged(QString name, QBrush brush);
+    void pluginZValueChanged(QString name, qreal z);
+    void pluginTransformChanged(QString name, QTransform transform);
+    void pluginPosChanged(QString name, QPointF pos);
+    void pluginRotationChanged(QString name, qreal angle);
+    void pluginScaleChanged(QString name, QPointF scale);
+    void pluginShearChanged(QString name, QPointF shear);
+    void pluginTranslationChanged(QString name, QPointF translation);
+    void pluginMatrixChanged(QString name, QMatrix matrix);
+    void pluginItemTransformChanged(QString name, QGraphicsTransform* transform);
+    void pluginItemFlagsChanged(QString name, QGraphicsItem::GraphicsItemFlags flags);
+    void pluginItemCacheModeChanged(QString name, QGraphicsItem::CacheMode mode);
+    void pluginItemBoundingRegionGranularityChanged(QString name, qreal granularity);
+    void pluginItemAcceptDropsChanged(QString name, bool on);
+    void pluginItemAcceptHoverEventsChanged(QString name, bool on);
+    void pluginItemAcceptTouchEventsChanged(QString name, bool on);
+    void pluginItemAcceptsHoverEventsChanged(QString name, bool on);
+    void pluginItemAcceptsTouchEventsChanged(QString name, bool on);
+    void pluginItemAcceptsDropsChanged(QString name, bool on);
+    void pluginItemAcceptsHoverChanged(QString name, bool on);
+    void pluginItemAcceptsTouchChanged(QString name, bool on);
+    void pluginItemAcceptsDropChanged(QString name, bool on);
 
-    // Get Plugin UIs. While the plugin objects may be single-instance objects,
-    // the UIs can be multiple instanced, where each instance of multiple
-    // instances binf to the same plugin.
-    std::vector<QWidget *> GetPluginUIs();
-
-    // Returns plugin after searching by name.
-    IPlugin *GetPluginByName(std::string plugin_name);
-
-    // List plugin names
-    std::vector<std::string> ListNames();
+private:
+    std::vector<IPlugin*> plugins;
+    std::map<QString, QWidget*> pluginUIs;
+    std::map<QString, bool> pluginEnabled;
+    std::map<QString, bool> pluginVisible;
+    std::map<QString, bool> pluginSelected;
+    std::map<QString, QColor> pluginColor;
+    std::map<QString, QPen> pluginPen;
+    std::map<QString, QBrush> pluginBrush;
+    std::map<QString, qreal> pluginZValue;
+    std::map<QString, QTransform> pluginTransform;
+    std::map<QString, QPointF> pluginPos;
+    std::map<QString, qreal> pluginRotation;
+    std::map<QString, QPointF> pluginScale;
+    std::map<QString, QPointF> pluginShear;
+    std::map<QString, QPointF> pluginTranslation;
+    std::map<QString, QMatrix> pluginMatrix;
+    std::map<QString, QGraphicsTransform*> pluginItemTransform;
+    std::map<QString, QGraphicsItem::GraphicsItemFlags> pluginItemFlags;
+    std::map<QString, QGraphicsItem::CacheMode> pluginItemCacheMode;
+    std::map<QString, qreal> pluginItemBoundingRegionGranularity;
+    std::map<QString, bool> pluginItemAcceptDrops;
+    std::map<QString, bool> pluginItemAcceptHoverEvents;
+    std::map<QString, bool> pluginItemAcceptTouchEvents;
+    std::map<QString, bool> pluginItemAcceptsHoverEvents;
+    std::map<QString, bool> pluginItemAcceptsTouchEvents;
+    std::map<QString, bool> pluginItemAcceptsDrops;
+    std::map<QString, bool> pluginItemAcceptsHover;
+    std::map<QString, bool> pluginItemAcceptsTouch;
+    std::map<QString, bool> pluginItemAcceptsDrop;
 };
-
-
-
-
 
 #endif
 

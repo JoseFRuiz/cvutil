@@ -134,7 +134,7 @@
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
     <PreBuildEvent>
-      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)include\RoiManager.h" -o "$(ProjectDir)moc_RoiManager.cpp"</Command>
+      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -DROIMANAGER_SOURCE -DWIN32 "$(ProjectDir)include\RoiManager.h" -o "$(ProjectDir)moc_RoiManager.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\RoiManager\bin\$(TargetName).dll*" /Y

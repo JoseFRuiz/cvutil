@@ -38,8 +38,8 @@ along with cvutil; see the file COPYING.  If not, see
 
 #ifdef WIN32
 #if (!defined PLUGINAPI)
-#if (defined PLUGINMANAGER_SOURCE)
-#define PLUGINAPI __declspec(dllexport) 
+#if (defined PLUGINMANAGER_SOURCE || defined ROIMANAGER_SOURCE)
+#define PLUGINAPI __declspec(dllexport)
 #else
 #define PLUGINAPI __declspec(dllimport)
 #endif
@@ -142,21 +142,21 @@ class ValueRangeParameter : public ValueParameter<T>
 {
 public:
     ValueRangeParameter(std::string _Name, std::string _DisplayText, T _minVal, T _maxVal) :
-        ValueParameter(_Name, _DisplayText, _minVal, _maxVal)
+        ValueParameter<T>(_Name, _DisplayText, _minVal, _maxVal)
     {
         if (typeid(T) == typeid(int))
-            type = ParameterType::IntegerRange;
+            this->type = ParameterType::IntegerRange;
         else if (typeid(T) == typeid(float))
-            type = ParameterType::FloatRange;
+            this->type = ParameterType::FloatRange;
         else
             throw (std::string("In function:") + std::string(__func__) + std::string("Unknown value parameter."));
 
         if (_maxVal <= _minVal)
             throw (std::string("In function:") + std::string(__func__) + std::string("maxVal must be greater than minVal."));
 
-        minVal = _minVal;
-        maxVal = _maxVal;
-        value = minVal;
+        this->minVal = _minVal;
+        this->maxVal = _maxVal;
+        this->value = this->minVal;
     }
 };
 
@@ -173,10 +173,10 @@ protected:
     T alt_value;
 public:
     LimitRangeParameter(std::string _Name, std::string _DisplayText, T _minVal, T _maxVal) :
-        ValueParameter(_Name, _DisplayText, _minVal, _maxVal)
+        ValueParameter<T>(_Name, _DisplayText, _minVal, _maxVal)
     {
         if (typeid(T) == typeid(int))
-            type = ParameterType::IntegerSpan;
+            this->type = ParameterType::IntegerSpan;
         /*else if (typeid(T) == typeid(float))
             type = ParameterType::FloatRange;*/
         else
@@ -185,22 +185,22 @@ public:
         if (_maxVal <= _minVal)
             throw (std::string("In function:") + std::string(__func__) + std::string("maxVal must be greater than minVal."));
 
-        minVal = _minVal;
-        maxVal = _maxVal;
-        value = minVal;
-        alt_value = maxVal;
+        this->minVal = _minVal;
+        this->maxVal = _maxVal;
+        this->value = this->minVal;
+        alt_value = this->maxVal;
     }
 
     virtual void setValue(T _value)
     {
         if (_value > alt_value)
             throw (std::string("In function:") + std::string(__func__) + std::string("Lower limit is less than upper limit."));
-        value = _value;
+        this->value = _value;
     }
     virtual T alt_getValue() { return alt_value; }
     virtual void alt_setValue(T _value)
     {
-        if (_value < value)
+        if (_value < this->value)
             throw (std::string("In function:") + std::string(__func__) + std::string("Upper limit is less than lower limit."));
         alt_value = _value;
     }
@@ -231,9 +231,9 @@ public:
 
 Q_DECLARE_METATYPE(ItemsParameter*);
 
-class IPlugin// : public QObject
+class IPlugin : public QObject
 {
-    //Q_OBJECT;
+    Q_OBJECT;
 public:
     virtual ~IPlugin() {}
     virtual std::string getName() = 0;
@@ -303,13 +303,14 @@ public:
     // It works only if the plugin supports multiple progress steps and 
     // updates progress to the main window using updateProgress().
     virtual void abort() = 0;
+
 signals:
     // To be used as signal to the main application to update the image shown.
-    virtual void updateVisualOutput(cv::Mat m) = 0;
+    void updateVisualOutput(cv::Mat m);
 
     // To be used as signal to the main application to update the progress 
     // of analyzing an image in interactive mode.
-    virtual void updateProgress(QString status) = 0;
+    void updateProgress(QString status);
 };
 
 QT_BEGIN_NAMESPACE

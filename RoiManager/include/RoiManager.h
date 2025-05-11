@@ -30,7 +30,6 @@ along with cvutil; see the file COPYING.  If not, see
 #ifndef ROIMANAGER_H
 #define ROIMANAGER_H
 
-#include "PluginInterfaces.h"
 #ifdef WIN32
 #if (!defined PLUGINAPI)
 #if (defined ROIMANAGER_SOURCE)
@@ -41,6 +40,7 @@ along with cvutil; see the file COPYING.  If not, see
 #endif
 #endif
 
+#include "PluginInterfaces.h"
 #include <QtWidgets>
 #include <opencv2/opencv.hpp>
 
@@ -64,7 +64,7 @@ enum class BorderHoverMode { None, TopLeft, Top, TopRight, Right, BottomRight, B
 
 class PLUGINAPI RoiManager : public QObject
 {
-    Q_OBJECT;
+    Q_OBJECT
 
     //GraphicsScene *gscene = nullptr;
 
@@ -83,7 +83,8 @@ class PLUGINAPI RoiManager : public QObject
     QColor roicolor = QColor::fromRgb(255, 0, 0);
     int penwidth = 1;
 
-    RoiManager() { /*selectedrois.reserve(100);*/ }
+    RoiManager(QObject *parent = nullptr) { /*selectedrois.reserve(100);*/ }
+    ~RoiManager() {}
 
 public:
     static RoiManager* GetInstance();
@@ -130,6 +131,70 @@ public:
     void setROIName(int idx, std::string cname);
     void selectROIbyName(std::string name);
 
+    void addROI(QGraphicsRectItem* roi, QString name = "", QString classname = "");
+    void removeROI(QGraphicsRectItem* roi);
+    void clearROIs();
+    void setROIClass(QGraphicsRectItem* roi, QString classname);
+    void setROIName(QGraphicsRectItem* roi, QString name);
+    QString getROIClass(QGraphicsRectItem* roi);
+    QString getROIName(QGraphicsRectItem* roi);
+    std::vector<QString> getROINames();
+    std::vector<QString> getROIClasses();
+    void setROIDimensions(QGraphicsRectItem* roi, QRectF rect);
+    QRectF getROIDimensions(QGraphicsRectItem* roi);
+    void setROISelected(QGraphicsRectItem* roi, bool selected);
+    bool isROISelected(QGraphicsRectItem* roi);
+    void setROIVisible(QGraphicsRectItem* roi, bool visible);
+    bool isROIVisible(QGraphicsRectItem* roi);
+    void setROIColor(QGraphicsRectItem* roi, QColor color);
+    QColor getROIColor(QGraphicsRectItem* roi);
+    void setROIPen(QGraphicsRectItem* roi, QPen pen);
+    QPen getROIPen(QGraphicsRectItem* roi);
+    void setROIBrush(QGraphicsRectItem* roi, QBrush brush);
+    QBrush getROIBrush(QGraphicsRectItem* roi);
+    void setROIZValue(QGraphicsRectItem* roi, qreal z);
+    qreal getROIZValue(QGraphicsRectItem* roi);
+    void setROITransform(QGraphicsRectItem* roi, QTransform transform);
+    QTransform getROITransform(QGraphicsRectItem* roi);
+    void setROIPos(QGraphicsRectItem* roi, QPointF pos);
+    QPointF getROIPos(QGraphicsRectItem* roi);
+    void setROIRotation(QGraphicsRectItem* roi, qreal angle);
+    qreal getROIRotation(QGraphicsRectItem* roi);
+    void setROIScale(QGraphicsRectItem* roi, qreal sx, qreal sy);
+    QPointF getROIScale(QGraphicsRectItem* roi);
+    void setROIShear(QGraphicsRectItem* roi, qreal sh, qreal sv);
+    QPointF getROIShear(QGraphicsRectItem* roi);
+    void setROITranslation(QGraphicsRectItem* roi, qreal dx, qreal dy);
+    QPointF getROITranslation(QGraphicsRectItem* roi);
+    void setROIMatrix(QGraphicsRectItem* roi, QMatrix matrix);
+    QMatrix getROIMatrix(QGraphicsRectItem* roi);
+    void setROIItemTransform(QGraphicsRectItem* roi, QGraphicsTransform* transform);
+    QGraphicsTransform* getROIItemTransform(QGraphicsRectItem* roi);
+    void setROIItemFlags(QGraphicsRectItem* roi, QGraphicsItem::GraphicsItemFlags flags);
+    QGraphicsItem::GraphicsItemFlags getROIItemFlags(QGraphicsRectItem* roi);
+    void setROIItemCacheMode(QGraphicsRectItem* roi, QGraphicsItem::CacheMode mode);
+    QGraphicsItem::CacheMode getROIItemCacheMode(QGraphicsRectItem* roi);
+    void setROIItemBoundingRegionGranularity(QGraphicsRectItem* roi, qreal granularity);
+    qreal getROIItemBoundingRegionGranularity(QGraphicsRectItem* roi);
+    void setROIItemAcceptDrops(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptDrops(QGraphicsRectItem* roi);
+    void setROIItemAcceptHoverEvents(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptHoverEvents(QGraphicsRectItem* roi);
+    void setROIItemAcceptTouchEvents(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptTouchEvents(QGraphicsRectItem* roi);
+    void setROIItemAcceptsHoverEvents(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptsHoverEvents(QGraphicsRectItem* roi);
+    void setROIItemAcceptsTouchEvents(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptsTouchEvents(QGraphicsRectItem* roi);
+    void setROIItemAcceptsDrops(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptsDrops(QGraphicsRectItem* roi);
+    void setROIItemAcceptsHover(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptsHover(QGraphicsRectItem* roi);
+    void setROIItemAcceptsTouch(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptsTouch(QGraphicsRectItem* roi);
+    void setROIItemAcceptsDrop(QGraphicsRectItem* roi, bool on);
+    bool getROIItemAcceptsDrop(QGraphicsRectItem* roi);
+
 public slots:
     // Delete all ROIs.
     void deleteAll();
@@ -168,7 +233,7 @@ public slots:
     void setMessageHandler(QtMessageHandler logger);
 
 signals:
-    void selectedROIDimensionChanged();
+    void selectedROIDimensionChanged(QGraphicsRectItem* roi, QRectF rect);
 };
 
 #endif

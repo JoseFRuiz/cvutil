@@ -34,7 +34,7 @@ along with cvutil; see the file COPYING.  If not, see
 
 #include "MainWindow/MainWindow.h"
 
-#include <QTextCodec>
+#include <QtCore/QTextCodec>
 
 using namespace std;
 using namespace cv;

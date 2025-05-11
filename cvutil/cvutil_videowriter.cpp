@@ -26,6 +26,7 @@ along with cvutil; see the file COPYING.  If not, see
 */
 
 #include "cvutil_videowriter.h"
+#include "cvutil.h"
 
 #include <cstring>
 
@@ -182,3 +183,15 @@ CVUTILAPI Ptr<IVWriter> cvutil::createVideoWriter(string filepath, VideoWriterTy
         throw exception("Unknown video format specified.");
     }
 }
+
+#ifdef CVUTIL_EXPORTS
+cv::Ptr<VideoWriter> cvutil::createVideoWriter(const string& filename, int fourcc, double fps, Size frameSize, bool isColor)
+{
+    return cv::Ptr<VideoWriter>(new VideoWriterImpl(filename, fourcc, fps, frameSize, isColor));
+}
+
+cv::Ptr<VideoWriter> cvutil::createVideoWriter(const string& filename, int apiPreference, int fourcc, double fps, Size frameSize, bool isColor)
+{
+    return cv::Ptr<VideoWriter>(new VideoWriterImpl(filename, apiPreference, fourcc, fps, frameSize, isColor));
+}
+#endif

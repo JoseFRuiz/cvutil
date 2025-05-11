@@ -35,13 +35,18 @@ along with cvutil; see the file COPYING.  If not, see
 #include <QtWidgets/QtWidgets>
 #include <QtCharts/QChartView>
 
-QT_CHARTS_USE_NAMESPACE;
+QT_BEGIN_NAMESPACE
+QT_CHARTS_USE_NAMESPACE
+QT_END_NAMESPACE
+
 using namespace cvutil;
 
+#ifndef CVUTILAPI
 #ifdef CVUTIL_EXPORTS
 #define CVUTILAPI __declspec(dllexport)
 #else
 #define CVUTILAPI __declspec(dllimport)
+#endif
 #endif
 
 namespace cvutil

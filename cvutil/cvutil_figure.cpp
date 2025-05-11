@@ -26,6 +26,7 @@ along with cvutil; see the file COPYING.  If not, see
 */
 
 #include "cvutil_figure.h"
+#include "cvutil.h"
 #include "MainWindow/logger.h"
 
 // These macros may be defined when Windows.h is included prior to
@@ -63,6 +64,7 @@ QT_END_NAMESPACE
 
 using namespace std;
 using namespace cv;
+using namespace cvutil;
 
 int figure_impl::figure_number = 0;
 int figure_impl::default_precision = 2;
@@ -906,12 +908,14 @@ void figure_impl::release()
     delete this;
 }
 
-CVUTILAPI Ptr<figure> cvutil::createfigure()
+#ifdef CVUTIL_EXPORTS
+cv::Ptr<figure> cvutil::createfigure()
 {
-    return makePtr<figure_impl>();
+    return cv::Ptr<figure>(new Figure());
 }
 
-CVUTILAPI Ptr<figure> cvutil::createfigure(int n)
+cv::Ptr<figure> cvutil::createfigure(int n)
 {
-    return makePtr<figure_impl>(n);
+    return cv::Ptr<figure>(new Figure(n));
 }
+#endif

@@ -36,7 +36,10 @@ along with cvutil; see the file COPYING.  If not, see
 #include <QtCharts/QChartView>
 
 QT_BEGIN_NAMESPACE
-QT_CHARTS_USE_NAMESPACE
+namespace QtCharts {
+    class QChartView;
+    class QChart;
+}
 QT_END_NAMESPACE
 
 namespace cvutil {
@@ -71,7 +74,7 @@ namespace cvutil {
         virtual void ylabel(std::string lab, int fontSize = 13, std::string fontWeight = "normal") = 0;
         virtual void showgrid(bool on) = 0;
         
-        virtual QChart* getChart() = 0;
+        virtual QtCharts::QChart* getChart() = 0;
 
         virtual void hold(bool on) = 0;
         virtual void show() = 0;

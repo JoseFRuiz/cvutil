@@ -27,58 +27,131 @@ along with cvutil; see the file COPYING.  If not, see
 
 #include "include/PluginManager.h"
 #include "PluginUI/ParameterListWidget.h"
+#include <QApplication>
+#include <QDir>
+#include <QPluginLoader>
 
 using namespace std;
 
-void PluginManager::Load(string path)
+PluginManager::PluginManager(QObject *parent) : QObject(parent)
 {
-    pluginsDir = QDir(QApplication::instance()->applicationDirPath());
-    pluginsDir.cd("plugins");
+}
 
-    for (QString &fileName : pluginsDir.entryList(QDir::Files))
+PluginManager::~PluginManager()
+{
+    unloadAllPlugins();
+}
+
+void PluginManager::loadPlugin(QString pluginPath)
+{
+    QPluginLoader loader(pluginPath);
+    QObject *plugin = loader.instance();
+    
+    if (plugin)
     {
-        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-        QObject *plugin = loader.instance();
-        
-        if (plugin)
+        IPlugin *p = qobject_cast<IPlugin *>(plugin);
+        if (p)
         {
-            IPlugin *p = qobject_cast<IPlugin *>(plugin);
             plugins.push_back(p);
-            plugin_names.push_back(p->getName());
-            qInfo().noquote().nospace() << "Plugin " << QString::fromStdString(p->getName()) << " loaded.";
-            pluginfiles += fileName;
+            m_pluginEnabled[p->getName()] = true;
+            m_pluginVisible[p->getName()] = true;
+            m_pluginSelected[p->getName()] = false;
+            emit pluginLoaded(p->getName());
+            qInfo().noquote().nospace() << "Plugin " << p->getName() << " loaded.";
         }
     }
 }
 
-IPlugin *PluginManager::GetPluginByName(string plugin_name)
+void PluginManager::unloadPlugin(QString pluginPath)
 {
-    for (int i = 0; i < plugins.size(); i++)
-        if (plugins[i]->getName() == plugin_name)
-            return plugins[i];
-
-    return nullptr;
+    for (auto it = plugins.begin(); it != plugins.end(); ++it)
+    {
+        if ((*it)->getPath() == pluginPath)
+        {
+            QString name = (*it)->getName();
+            plugins.erase(it);
+            m_pluginEnabled.erase(name);
+            m_pluginVisible.erase(name);
+            m_pluginSelected.erase(name);
+            emit pluginUnloaded(name);
+            break;
+        }
+    }
 }
 
-vector<IPlugin *> PluginManager::GetPlugins()
+void PluginManager::unloadAllPlugins()
+{
+    for (auto plugin : plugins)
+    {
+        QString name = plugin->getName();
+        emit pluginUnloaded(name);
+    }
+    plugins.clear();
+    m_pluginEnabled.clear();
+    m_pluginVisible.clear();
+    m_pluginSelected.clear();
+}
+
+std::vector<IPlugin*> PluginManager::getPlugins()
 {
     return plugins;
 }
 
-vector<QWidget *> PluginManager::GetPluginUIs()
+IPlugin* PluginManager::getPlugin(QString name)
 {
-    if (plugins.size() == 0)
-        return{};
-
-    vector<QWidget *> result;
-
     for (auto plugin : plugins)
-        result.push_back(new ParameterListWidget(plugin));
-
-    return result;
+    {
+        if (plugin->getName() == name)
+            return plugin;
+    }
+    return nullptr;
 }
 
-vector<string> PluginManager::ListNames()
+void PluginManager::setPluginUI(QWidget* ui)
 {
-    return plugin_names;
+    if (ui)
+    {
+        QString name = ui->objectName();
+        pluginUIs[name] = ui;
+    }
+}
+
+QWidget* PluginManager::getPluginUI()
+{
+    if (pluginUIs.empty())
+        return nullptr;
+    return pluginUIs.begin()->second;
+}
+
+void PluginManager::setPluginEnabled(QString name, bool enabled)
+{
+    m_pluginEnabled[name] = enabled;
+    emit pluginEnabled(name, enabled);
+}
+
+bool PluginManager::isPluginEnabled(QString name)
+{
+    return m_pluginEnabled[name];
+}
+
+void PluginManager::setPluginVisible(QString name, bool visible)
+{
+    m_pluginVisible[name] = visible;
+    emit pluginVisible(name, visible);
+}
+
+bool PluginManager::isPluginVisible(QString name)
+{
+    return m_pluginVisible[name];
+}
+
+void PluginManager::setPluginSelected(QString name, bool selected)
+{
+    m_pluginSelected[name] = selected;
+    emit pluginSelected(name, selected);
+}
+
+bool PluginManager::isPluginSelected(QString name)
+{
+    return m_pluginSelected[name];
 }

@@ -164,9 +164,9 @@ signals:
 private:
     std::vector<IPlugin*> plugins;
     std::map<QString, QWidget*> pluginUIs;
-    std::map<QString, bool> pluginEnabled;
-    std::map<QString, bool> pluginVisible;
-    std::map<QString, bool> pluginSelected;
+    std::map<QString, bool> m_pluginEnabled;
+    std::map<QString, bool> m_pluginVisible;
+    std::map<QString, bool> m_pluginSelected;
     std::map<QString, QColor> pluginColor;
     std::map<QString, QPen> pluginPen;
     std::map<QString, QBrush> pluginBrush;

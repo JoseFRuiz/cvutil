@@ -125,7 +125,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>cudart.lib;opencv_world410d.lib;Qt6Cored.lib;Qt6Widgetsd.lib;Qt6Chartsd.lib;Qt6Guid.lib;qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cudart.lib;opencv_world412d.lib;Qt6Cored.lib;Qt6Widgetsd.lib;Qt6Chartsd.lib;Qt6Guid.lib;qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <CudaRuntime>Shared</CudaRuntime>
@@ -181,7 +181,7 @@ xcopy "$(ProjectDir)include\RoiManager.h" "$(OutputPath)..\..\build\RoiManager\i
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>cudart.lib;opencv_world410.lib;Qt6Widgets.lib;Qt6Core.lib;Qt6Charts.lib;Qt6Gui.lib;qtmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cudart.lib;opencv_world412.lib;Qt6Widgets.lib;Qt6Core.lib;Qt6Charts.lib;Qt6Gui.lib;qtmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <CudaRuntime>Shared</CudaRuntime>

@@ -53,11 +53,12 @@ void PluginManager::loadPlugin(QString pluginPath)
         if (p)
         {
             plugins.push_back(p);
-            m_pluginEnabled[p->getName()] = true;
-            m_pluginVisible[p->getName()] = true;
-            m_pluginSelected[p->getName()] = false;
-            emit pluginLoaded(p->getName());
-            qInfo().noquote().nospace() << "Plugin " << p->getName() << " loaded.";
+            QString name = QString::fromStdString(p->getName());
+            m_pluginEnabled[name] = true;
+            m_pluginVisible[name] = true;
+            m_pluginSelected[name] = false;
+            emit pluginLoaded(name);
+            qInfo().noquote().nospace() << "Plugin " << name << " loaded.";
         }
     }
 }
@@ -66,9 +67,9 @@ void PluginManager::unloadPlugin(QString pluginPath)
 {
     for (auto it = plugins.begin(); it != plugins.end(); ++it)
     {
-        if ((*it)->getPath() == pluginPath)
+        QString name = QString::fromStdString((*it)->getName());
+        if (name == pluginPath)
         {
-            QString name = (*it)->getName();
             plugins.erase(it);
             m_pluginEnabled.erase(name);
             m_pluginVisible.erase(name);
@@ -83,7 +84,7 @@ void PluginManager::unloadAllPlugins()
 {
     for (auto plugin : plugins)
     {
-        QString name = plugin->getName();
+        QString name = QString::fromStdString(plugin->getName());
         emit pluginUnloaded(name);
     }
     plugins.clear();
@@ -101,7 +102,7 @@ IPlugin* PluginManager::getPlugin(QString name)
 {
     for (auto plugin : plugins)
     {
-        if (plugin->getName() == name)
+        if (QString::fromStdString(plugin->getName()) == name)
             return plugin;
     }
     return nullptr;

@@ -36,6 +36,8 @@ along with cvutil; see the file COPYING.  If not, see
 #include <QtCore/QTimer>
 
 #include <algorithm>
+#include <cmath>
+#include <QtGui/QWheelEvent>
 
 using namespace std;
 using namespace cv;
@@ -51,7 +53,7 @@ bool MainWindow::showDebugMessages = false;
 
 void GraphicsView::wheelEvent(QWheelEvent *e)
 {
-    SetScale(scaleval * pow(scalemultiplier, e->delta() / 120.0));
+    SetScale(scaleval * pow(scalemultiplier, e->angleDelta().y() / 120.0));
 }
 
 void GraphicsView::dragEnterEvent(QDragEnterEvent * event)

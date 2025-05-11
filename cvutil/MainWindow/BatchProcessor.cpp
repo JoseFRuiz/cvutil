@@ -27,7 +27,7 @@ along with cvutil; see the file COPYING.  If not, see
 
 #include "BatchProcessor.h"
 #include <Windows.h>
-#include <PluginManager/PluginManager.h>
+#include "../../PluginManager/include/PluginManager.h"
 
 using namespace std;
 using namespace cv;

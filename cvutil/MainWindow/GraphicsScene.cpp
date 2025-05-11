@@ -26,7 +26,7 @@ along with cvutil; see the file COPYING.  If not, see
 */
 
 //#include <ImageProcessor.h>
-#include <RoiManager/RoiManager.h>
+#include "../../RoiManager/include/RoiManager.h"
 #include "GraphicsScene.h"
 
 GraphicsScene::GraphicsScene(QObject* parent) : QGraphicsScene(parent)

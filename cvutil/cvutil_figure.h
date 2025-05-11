@@ -145,12 +145,10 @@ namespace cvutil
         // Returns the chart widget so as to make it embeddable
         // to other UI windows.
         // Get chart for advanced customizations.
-        
-        QChart* getChart();
-        void show();
-        void wait();
-
-        void release();
+        QtCharts::QChart* getChart() override;
+        void show() override;
+        void wait() override;
+        void release() override;
     };
 }
 

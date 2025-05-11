@@ -26,7 +26,7 @@ along with cvutil; see the file COPYING.  If not, see
 */
 
 #include "FeatureExtractorThread.h"
-#include <PluginManager/PluginManager.h>
+#include "../../PluginManager/include/PluginManager.h"
 
 //#include <ImageProcessor.h>
 #include "../cvutil_core.h"

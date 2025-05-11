@@ -39,7 +39,7 @@ QT_BEGIN_NAMESPACE
 QT_CHARTS_USE_NAMESPACE
 QT_END_NAMESPACE
 
-using namespace cvutil;
+namespace cvutil {
 
 #ifndef CVUTILAPI
 #ifdef CVUTIL_EXPORTS
@@ -49,8 +49,6 @@ using namespace cvutil;
 #endif
 #endif
 
-namespace cvutil
-{
     class CVUTILAPI figure
     {
     public:

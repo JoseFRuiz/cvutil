@@ -40,20 +40,20 @@ along with cvutil; see the file COPYING.  If not, see
 #undef max
 #endif
 
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QtWidgets>
-#include <QtWidgets/QMenuBar>
+#include <Qt6Widgets/QMainWindow>
+#include <Qt6Widgets/QtWidgets>
+#include <Qt6Widgets/QMenuBar>
 
-#include <QtCharts/QChartView>
-#include <QtCharts/QBarSeries>
-#include <QtCharts/QStackedBarSeries>
-#include <QtCharts/QBarSet>
-#include <QtCharts/QLegend>
-#include <QtCharts/QCategoryAxis>
-#include <QtCharts/QBarCategoryAxis>
-#include <QtCharts/QValueAxis>
+#include <Qt6Charts/QChartView>
+#include <Qt6Charts/QBarSeries>
+#include <Qt6Charts/QStackedBarSeries>
+#include <Qt6Charts/QBarSet>
+#include <Qt6Charts/QLegend>
+#include <Qt6Charts/QCategoryAxis>
+#include <Qt6Charts/QBarCategoryAxis>
+#include <Qt6Charts/QValueAxis>
 
-#include <QtCore/QPoint>
+#include <Qt6Core/QPoint>
 
 QT_CHARTS_USE_NAMESPACE
 

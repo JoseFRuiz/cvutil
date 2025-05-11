@@ -26,6 +26,8 @@ along with cvutil; see the file COPYING.  If not, see
 */
 
 #include "BatchProcessor.h"
+#include <Windows.h>
+#include <PluginManager/PluginManager.h>
 
 using namespace std;
 using namespace cv;
@@ -748,4 +750,25 @@ void BatchProcessor::timerEvent(QTimerEvent * ev)
     else if (estcheck)
         estcheck = false;
 
+}
+
+void BatchProcessor::loadPlugins()
+{
+    auto& pluginManager = PluginManager::Instance();
+    auto pluginUIs = pluginManager.GetPluginUIs();
+    // ... rest of the function
+}
+
+void BatchProcessor::processBatch()
+{
+    auto& pluginManager = PluginManager::Instance();
+    auto plugins = pluginManager.GetPlugins();
+    // ... rest of the function
+}
+
+void BatchProcessor::getPluginNames()
+{
+    auto& pluginManager = PluginManager::Instance();
+    auto pluginNames = pluginManager.ListNames();
+    // ... rest of the function
 }

@@ -30,16 +30,7 @@ along with cvutil; see the file COPYING.  If not, see
 #ifndef ROIMANAGER_H
 #define ROIMANAGER_H
 
-#ifdef WIN32
-#if (!defined PLUGINAPI)
-#if (defined ROIMANAGER_SOURCE)
-#define PLUGINAPI __declspec(dllexport)
-#else
-#define PLUGINAPI __declspec(dllimport)
-#endif
-#endif
-#endif
-
+#include "PluginAPI.h"
 #include "PluginInterfaces.h"
 #include <QtWidgets>
 #include <opencv2/opencv.hpp>

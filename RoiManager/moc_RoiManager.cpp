@@ -41,6 +41,9 @@ template <> constexpr inline auto RoiManager::qt_create_metaobjectdata<qt_meta_t
         "RoiManager",
         "selectedROIDimensionChanged",
         "",
+        "QGraphicsRectItem*",
+        "roi",
+        "rect",
         "deleteAll",
         "deleteSelected",
         "selectROI",
@@ -63,42 +66,44 @@ template <> constexpr inline auto RoiManager::qt_create_metaobjectdata<qt_meta_t
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'selectedROIDimensionChanged'
-        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SignalData<void(QGraphicsRectItem *, QRectF)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 3, 4 }, { QMetaType::QRectF, 5 },
+        }}),
         // Slot 'deleteAll'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'deleteSelected'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'selectROI'
-        QtMocHelpers::SlotData<void(int)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 6 },
+        QtMocHelpers::SlotData<void(int)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 9 },
         }}),
         // Slot 'clearSelection'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'clearSelection'
-        QtMocHelpers::SlotData<void(int)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 6 },
+        QtMocHelpers::SlotData<void(int)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 9 },
         }}),
         // Slot 'selectAll'
-        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'setROIBorderWidth'
-        QtMocHelpers::SlotData<void(double)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Double, 10 },
+        QtMocHelpers::SlotData<void(double)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Double, 13 },
         }}),
         // Slot 'updateBoundaries'
-        QtMocHelpers::SlotData<void(qreal, qreal)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QReal, 12 }, { QMetaType::QReal, 13 },
+        QtMocHelpers::SlotData<void(qreal, qreal)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QReal, 15 }, { QMetaType::QReal, 16 },
         }}),
         // Slot 'loadAnnotation'
-        QtMocHelpers::SlotData<std::vector<QGraphicsRectItem*>(QString)>(14, 2, QMC::AccessPublic, 0x80000000 | 15, {{
-            { QMetaType::QString, 16 },
+        QtMocHelpers::SlotData<std::vector<QGraphicsRectItem*>(QString)>(17, 2, QMC::AccessPublic, 0x80000000 | 18, {{
+            { QMetaType::QString, 19 },
         }}),
         // Slot 'saveAnnotation'
-        QtMocHelpers::SlotData<void(QString)>(17, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 16 },
+        QtMocHelpers::SlotData<void(QString)>(20, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 19 },
         }}),
         // Slot 'setMessageHandler'
-        QtMocHelpers::SlotData<void(QtMessageHandler)>(18, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 19, 20 },
+        QtMocHelpers::SlotData<void(QtMessageHandler)>(21, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 22, 23 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -123,7 +128,7 @@ void RoiManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<RoiManager *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->selectedROIDimensionChanged(); break;
+        case 0: _t->selectedROIDimensionChanged((*reinterpret_cast< std::add_pointer_t<QGraphicsRectItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QRectF>>(_a[2]))); break;
         case 1: _t->deleteAll(); break;
         case 2: _t->deleteSelected(); break;
         case 3: _t->selectROI((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
@@ -140,7 +145,7 @@ void RoiManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (RoiManager::*)()>(_a, &RoiManager::selectedROIDimensionChanged, 0))
+        if (QtMocHelpers::indexOfMethod<void (RoiManager::*)(QGraphicsRectItem * , QRectF )>(_a, &RoiManager::selectedROIDimensionChanged, 0))
             return;
     }
 }
@@ -177,8 +182,8 @@ int RoiManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void RoiManager::selectedROIDimensionChanged()
+void RoiManager::selectedROIDimensionChanged(QGraphicsRectItem * _t1, QRectF _t2)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2);
 }
 QT_WARNING_POP

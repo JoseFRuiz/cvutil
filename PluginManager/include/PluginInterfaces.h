@@ -30,21 +30,12 @@ along with cvutil; see the file COPYING.  If not, see
 #ifndef PLUGININTERFACES_H
 #define PLUGININTERFACES_H
 
+#include "PluginAPI.h"
 //#include "ImageProcessor.h"
 //#include <cvutil.h>
 #include <opencv2/opencv.hpp>
 #include <QtWidgets/QtWidgets>
 #include <QtCharts/QtCharts>
-
-#ifdef WIN32
-#if (!defined PLUGINAPI)
-#if (defined PLUGINMANAGER_SOURCE || defined ROIMANAGER_SOURCE)
-#define PLUGINAPI __declspec(dllexport)
-#else
-#define PLUGINAPI __declspec(dllimport)
-#endif
-#endif
-#endif
 
 enum class ParameterType { None, Boolean, Integer, Float, IntegerRange, FloatRange, IntegerSpan, Items };
 enum class AppType { None, Custom, Segmentation };

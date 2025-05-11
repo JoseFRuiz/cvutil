@@ -201,6 +201,7 @@ xcopy "$(ProjectDir)include\PluginManager.h" "$(OutputPath)..\..\build\PluginMan
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="moc_PluginInterfaces.cpp" />
+    <ClCompile Include="moc_PluginManager.cpp" />
     <ClCompile Include="PluginManager.cpp" />
     <ClCompile Include="PluginUI\moc_ParameterListWidget.cpp" />
     <ClCompile Include="PluginUI\moc_qxtspanslider.cpp" />

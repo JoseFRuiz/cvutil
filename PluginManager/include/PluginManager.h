@@ -35,11 +35,11 @@ along with cvutil; see the file COPYING.  If not, see
 #include <QLayout>
 
 #ifdef WIN32
-#if (!defined PLAPI)
+#if (!defined PLUGINAPI)
 #if (defined PLUGINMANAGER_SOURCE)
-#define PLAPI __declspec(dllexport)
+#define PLUGINAPI __declspec(dllexport)
 #else
-#define PLAPI __declspec(dllimport)
+#define PLUGINAPI __declspec(dllimport)
 #endif
 #endif
 #endif
@@ -50,7 +50,7 @@ along with cvutil; see the file COPYING.  If not, see
 #include "PluginUI/ParameterListWidget.h"
 #endif
 
-class PLAPI PluginManager
+class PLUGINAPI PluginManager
 {
     PluginManager() {};
 

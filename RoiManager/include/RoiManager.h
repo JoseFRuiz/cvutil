@@ -30,32 +30,31 @@ along with cvutil; see the file COPYING.  If not, see
 #ifndef ROIMANAGER_H
 #define ROIMANAGER_H
 
+#include "PluginInterfaces.h"
+#ifdef WIN32
+#if (!defined PLUGINAPI)
+#if (defined ROIMANAGER_SOURCE)
+#define PLUGINAPI __declspec(dllexport)
+#else
+#define PLUGINAPI __declspec(dllimport)
+#endif
+#endif
+#endif
+
 #include <QtWidgets>
 #include <opencv2/opencv.hpp>
 
 #include <iostream>
 #include <fstream>
 
-
-#ifdef WIN32
-#if (!defined IPAPI)
-#if (defined ROIMANAGER_SOURCE)
-#define IPAPI __declspec(dllexport)
-#else
-#define IPAPI __declspec(dllimport)
-
 #ifdef _DEBUG
-#pragma comment(lib, "Qt5Cored.lib")
-#pragma comment(lib, "Qt5Guid.lib")
-#pragma comment(lib, "Qt5Widgetsd.lib")
+#pragma comment(lib, "Qt6Cored.lib")
+#pragma comment(lib, "Qt6Guid.lib")
+#pragma comment(lib, "Qt6Widgetsd.lib")
 #else
-#pragma comment(lib, "Qt5Core.lib")
-#pragma comment(lib, "Qt5Gui.lib")
-#pragma comment(lib, "Qt5Widgets.lib")
-#endif
-
-#endif
-#endif
+#pragma comment(lib, "Qt6Core.lib")
+#pragma comment(lib, "Qt6Gui.lib")
+#pragma comment(lib, "Qt6Widgets.lib")
 #endif
 
 //#include <GraphicsScene.h>
@@ -63,7 +62,7 @@ enum class MouseMode { PixelValue, ImagePanning, RegionOfInterest };
 enum class RegionOfInterestSubMode { PixelValue, ImagePanning, RegionOfInterest };
 enum class BorderHoverMode { None, TopLeft, Top, TopRight, Right, BottomRight, Bottom, BottomLeft, Left };
 
-class IPAPI RoiManager : public QObject
+class PLUGINAPI RoiManager : public QObject
 {
     Q_OBJECT;
 

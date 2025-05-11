@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "qwheelevent": "cpp"
+        "qwheelevent": "cpp",
+        "qtoolbar": "cpp",
+        "qmainwindow": "cpp"
     }
 }

@@ -36,7 +36,7 @@ along with cvutil; see the file COPYING.  If not, see
 #include <QtCharts/QChartView>
 #include <QtWidgets/QGridLayout>
 
-QT_CHARTS_USE_NAMESPACE;
+// QT_CHARTS_USE_NAMESPACE;
 
 using namespace cvutil;
 

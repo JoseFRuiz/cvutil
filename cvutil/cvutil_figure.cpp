@@ -51,13 +51,10 @@ along with cvutil; see the file COPYING.  If not, see
 #include <QtCharts/QChartView>
 #include <QtCharts/QChart>
 #include <QtCore/QPoint>
+#include <QAction>
+#include <QMenu>
 
-QT_CHARTS_USE_NAMESPACE
-
-QT_BEGIN_NAMESPACE
-class QAction;
-class QMenu;
-QT_END_NAMESPACE
+// QT_CHARTS_USE_NAMESPACE
 
 using namespace std;
 using namespace cv;
@@ -884,7 +881,7 @@ void figure_impl::hold(bool on)
 //}
 
 // TODO: Get chart based on subplot.
-QChart* figure_impl::getChart()
+QtCharts::QChart* figure_impl::getChart()
 {
     return charts.back();
 }

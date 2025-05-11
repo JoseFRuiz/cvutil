@@ -66,10 +66,10 @@ namespace cvutil
     CVUTILAPI cv::Mat ceil(cv::Mat m);
 
     template<typename T>
-    std::vector<T> cvutil::unique(const cv::Mat& input, bool sort = true);
+    std::vector<T> unique(const cv::Mat& input, bool sort = true);
 
     template <typename T>
-    std::vector<T> cvutil::range(T _minv, T _maxv = INT_MIN, T step = T(1));
+    std::vector<T> range(T _minv, T _maxv = INT_MIN, T step = T(1));
 
     // TODO: Equivalent to MATLAB imhist.
     CVUTILAPI std::pair<cv::Mat, cv::Mat> imhist(cv::Mat m);

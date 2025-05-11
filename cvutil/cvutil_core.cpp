@@ -34,6 +34,8 @@ along with cvutil; see the file COPYING.  If not, see
 
 #include "MainWindow/MainWindow.h"
 
+#include <QTextCodec>
+
 using namespace std;
 using namespace cv;
 
@@ -776,8 +778,7 @@ void cvutil::init(int argc, char *argv[], bool useOpt)
     srand(time(0));
 
     // Set text encoding to UTF-8 for the program
-    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
-    QTextCodec::setCodecForLocale(codec);
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 }
 
 void cvutil::drawText(Mat &GeomLayer, const string & text, Point org, Scalar color, int rightmargin, int thickness)

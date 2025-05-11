@@ -131,8 +131,7 @@ public:
     {
         QString headerText = model()->headerData(logicalIndex, QHeaderView::orientation(), Qt::DisplayRole).toString();
         ensurePolished();
-        auto options = QHeaderView::viewOptions();
-        auto metrics = QFontMetrics(options.font);
+        QFontMetrics metrics(font());
         auto maxWidth = QHeaderView::sectionSize(logicalIndex);
         const QSize margin(0, 20);
         auto rect = metrics.boundingRect(QRect(0, 0, maxWidth, 5000), Qt::TextWordWrap | Qt::AlignCenter, headerText, 4);

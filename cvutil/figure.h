@@ -38,6 +38,12 @@ along with cvutil; see the file COPYING.  If not, see
 QT_CHARTS_USE_NAMESPACE;
 using namespace cvutil;
 
+#ifdef CVUTIL_EXPORTS
+#define CVUTILAPI __declspec(dllexport)
+#else
+#define CVUTILAPI __declspec(dllimport)
+#endif
+
 namespace cvutil
 {
     class CVUTILAPI figure

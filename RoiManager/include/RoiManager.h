@@ -32,7 +32,11 @@ along with cvutil; see the file COPYING.  If not, see
 
 #include "PluginAPI.h"
 #include "PluginInterfaces.h"
-#include <QtWidgets>
+#include <QtWidgets/QWidget>
+#include <QtGui/QMatrix>
+#include <QtGui/QTransform>
+#include <QtWidgets/QGraphicsItem>
+#include <QtWidgets/QGraphicsRectItem>
 #include <opencv2/opencv.hpp>
 
 #include <iostream>

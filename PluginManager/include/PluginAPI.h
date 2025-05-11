@@ -11,6 +11,8 @@
 #define PLUGINAPI __declspec(dllimport)
 #endif
 #endif
+#else
+#define PLUGINAPI
 #endif
 
 #endif // PLUGINAPI_H 

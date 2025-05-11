@@ -75,7 +75,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtCharts;C:\opencv\build\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)include;$(ProjectDir)..\PluginManager\include;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtCharts;C:\opencv\build\include</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;C:\Qt\6.9.0\msvc2022_64\lib;C:\opencv\build\x64\vc15\lib</LibraryPath>
     <TargetName>$(ProjectName)d</TargetName>
   </PropertyGroup>
@@ -84,7 +84,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtCharts;C:\opencv\build\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)include;$(ProjectDir)..\PluginManager\include;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtCharts;C:\opencv\build\include</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;C:\Qt\6.9.0\msvc2022_64\lib;C:\opencv\build\x64\vc15\lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -123,11 +123,11 @@
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
     <PreBuildEvent>
-      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)include\PluginManager.h" -o "$(ProjectDir)moc_PluginManager.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)include\PluginInterfaces.h" -o "$(ProjectDir)moc_PluginInterfaces.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)PluginUI\ParameterListWidget.h" -o "$(ProjectDir)PluginUI\moc_ParameterListWidget.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)PluginUI\qxtspanslider.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
+      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)include\PluginManager.h" -o "$(ProjectDir)moc_PluginManager.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)include\PluginInterfaces.h" -o "$(ProjectDir)moc_PluginInterfaces.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\ParameterListWidget.h" -o "$(ProjectDir)PluginUI\moc_ParameterListWidget.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\PluginManager\bin\$(TargetName).dll*" /Y
@@ -184,11 +184,11 @@ xcopy "$(ProjectDir)include\PluginManager.h" "$(OutputPath)..\..\build\PluginMan
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
     <PreBuildEvent>
-      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)include\PluginManager.h" -o "$(ProjectDir)moc_PluginManager.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)include\PluginInterfaces.h" -o "$(ProjectDir)moc_PluginInterfaces.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)PluginUI\ParameterListWidget.h" -o "$(ProjectDir)PluginUI\moc_ParameterListWidget.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)PluginUI\qxtspanslider.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
+      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)include\PluginManager.h" -o "$(ProjectDir)moc_PluginManager.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)include\PluginInterfaces.h" -o "$(ProjectDir)moc_PluginInterfaces.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\ParameterListWidget.h" -o "$(ProjectDir)PluginUI\moc_ParameterListWidget.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\PluginManager\bin\$(TargetName).dll*" /Y
@@ -196,7 +196,6 @@ xcopy "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\PluginManager\l
 xcopy "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).exp*" /Y
 xcopy "$(ProjectDir)include\PluginInterfaces.h" "$(OutputPath)..\..\build\PluginManager\include\PluginInterfaces.h*" /Y
 xcopy "$(ProjectDir)include\PluginManager.h" "$(OutputPath)..\..\build\PluginManager\include\PluginManager.h*" /Y
-
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

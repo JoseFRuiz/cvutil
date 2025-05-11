@@ -106,10 +106,9 @@ void RoiManager::moveSelected(int xp, int yp)
             br.setX(br.x() + xp);
             br.setY(br.y() + yp);
             r->setRect(br);
+            emit selectedROIDimensionChanged(r, br);
         }
     }
-
-    emit selectedROIDimensionChanged();
 }
 
 //void RoiManager::deleteROI(int idx)
@@ -186,7 +185,7 @@ void RoiManager::moveSelected(int xp, int yp)
 void RoiManager::selectROI(int idx)
 {
     rois[idx]->setSelected(true);
-    emit selectedROIDimensionChanged();
+    emit selectedROIDimensionChanged(rois[idx], rois[idx]->rect());
 }
 
 void RoiManager::deleteAll()
@@ -258,7 +257,10 @@ void RoiManager::clearSelection(int idx)
 void RoiManager::selectAll()
 {
     for (auto roi : rois)
+    {
         roi->setSelected(true);
+        emit selectedROIDimensionChanged(roi, roi->rect());
+    }
 
     emit selectedROIDimensionChanged();
 }
@@ -458,6 +460,7 @@ void RoiManager::moveROIs(int x1, int y1, int x2, int y2, qreal w, qreal h)
         {
             QRectF r = roi->rect();
             roi->setRect(r.x() + xdiff, r.y() + ydiff, r.width(), r.height());
+            emit selectedROIDimensionChanged(roi, r);
         }
     }
 
@@ -552,7 +555,10 @@ void RoiManager::resizeROIs(BorderHoverMode m, QRectF hoverrect, vector<QRectF> 
         }
 
         if (sr.width() >= 0 && sr.height() >= 0)
+        {
             rois[selectedindices[i]]->setRect(sr);
+            emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
+        }
     }
 
     emit selectedROIDimensionChanged();
@@ -567,7 +573,7 @@ void RoiManager::deleteList(vector<int> indices)
     if (indices.size() == 0)
         return;
 
-    for (int idx = 0; idx < indices.size(); idx++)
+    for (auto idx : indices)
     {
         if (idx >= 0 && idx < nrois && rois[idx] != nullptr)
         {
@@ -608,6 +614,7 @@ void RoiManager::setX(int x, qreal scenewidth)
         xi = MIN(MAX(0, x), w - mr);
         sr.moveLeft(xi);
         rois[selectedindices[i]]->setRect(sr);
+        emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
     }
 
     emit selectedROIDimensionChanged();
@@ -631,6 +638,7 @@ void RoiManager::setY(int y, qreal sceneheight)
         yi = MIN(MAX(0, y), h - mb);
         sr.moveTop(yi);
         rois[selectedindices[i]]->setRect(sr);
+        emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
     }
 
     emit selectedROIDimensionChanged();
@@ -648,6 +656,7 @@ void RoiManager::setWidth(int width, qreal scenewidth)
         wi = MIN(w - sr.x(), width);
         sr.setWidth(wi);
         rois[selectedindices[i]]->setRect(sr);
+        emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
     }
 
     emit selectedROIDimensionChanged();
@@ -665,6 +674,7 @@ void RoiManager::setHeight(int height, qreal sceneheight)
         hi = MIN(h - sr.y(), height);
         sr.setHeight(hi);
         rois[selectedindices[i]]->setRect(sr);
+        emit selectedROIDimensionChanged(rois[selectedindices[i]], sr);
     }
 
     emit selectedROIDimensionChanged();
@@ -795,9 +805,15 @@ void RoiManager::setROIName(int idx, std::string cname)
 
 void RoiManager::selectROIbyName(std::string name)
 {
-    ptrdiff_t pos = find(roinames.begin(), roinames.end(), QString::fromStdString(name)) - roinames.begin();
-    rois[pos]->setSelected(true);
-    emit selectedROIDimensionChanged();
+    for (int i = 0; i < roinames.size(); i++)
+    {
+        if (roinames[i].toStdString() == name)
+        {
+            rois[i]->setSelected(true);
+            emit selectedROIDimensionChanged(rois[i], rois[i]->rect());
+            break;
+        }
+    }
 }
 
 std::vector<QGraphicsRectItem *> RoiManager::loadAnnotation(QString filepath)

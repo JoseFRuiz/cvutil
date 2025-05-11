@@ -565,7 +565,7 @@ WrappableCheckBox::WrappableCheckBox(const QString &text, QWidget *parent) : QWi
     lbl->setWordWrap(true);
 
     hl = new QHBoxLayout();
-    hl->setMargin(0);
+    hl->setContentsMargins(0, 0, 0, 0);
     hl->addWidget(cb);
     hl->addWidget(lbl);
 

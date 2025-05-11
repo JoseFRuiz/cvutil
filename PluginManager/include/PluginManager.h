@@ -31,15 +31,15 @@ along with cvutil; see the file COPYING.  If not, see
 #define PLUGINMANAGER_H
 
 //#include <cvutil.h>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QLayout>
-#include <QtGui/QMatrix>
-#include <QtGui/QTransform>
-#include <QtGui/QColor>
-#include <QtGui/QPen>
-#include <QtGui/QBrush>
-#include <QtWidgets/QGraphicsItem>
-#include <QtWidgets/QGraphicsTransform>
+#include <QWidget>
+#include <QLayout>
+#include <QMatrix>
+#include <QTransform>
+#include <QColor>
+#include <QPen>
+#include <QBrush>
+#include <QGraphicsItem>
+#include <QGraphicsTransform>
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <vector>

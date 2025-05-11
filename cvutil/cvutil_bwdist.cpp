@@ -702,13 +702,13 @@ Mat bwdist_helper::bwdist_mt(Mat m)
     std::thread *threads = new std::thread[nthreads];
 
     for (int tid = 0; tid < nthreads; tid++)
-        threads[tid] = std::thread(horizontal_st_avx, result, arrmat, tid);
+        threads[tid] = std::thread(horizontal_st_avx, std::ref(result), std::ref(arrmat), tid);
 
     for (int tid = 0; tid < nthreads; tid++)
         threads[tid].join();
 
     for (int tid = 0; tid < nthreads; tid++)
-        threads[tid] = std::thread(vertical_st_avx, result, arrmat, tid);
+        threads[tid] = std::thread(vertical_st_avx, std::ref(result), std::ref(arrmat), tid);
 
     for (int tid = 0; tid < nthreads; tid++)
         threads[tid].join();

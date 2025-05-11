@@ -41,12 +41,10 @@ QT_END_NAMESPACE
 
 namespace cvutil {
 
-#ifndef CVUTILAPI
 #ifdef CVUTIL_EXPORTS
 #define CVUTILAPI __declspec(dllexport)
 #else
 #define CVUTILAPI __declspec(dllimport)
-#endif
 #endif
 
     class CVUTILAPI figure

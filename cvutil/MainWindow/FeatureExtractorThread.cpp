@@ -26,10 +26,9 @@ along with cvutil; see the file COPYING.  If not, see
 */
 
 #include "FeatureExtractorThread.h"
+#include <PluginManager/PluginManager.h>
 
 //#include <ImageProcessor.h>
-#include <PluginManager.h>
-
 #include "../cvutil_core.h"
 
 using namespace std;
@@ -78,18 +77,17 @@ void FeatureExtractorThread::run()
     Mat inp, out;
     IPlugin *plugin;
 
-    if (!mainplugin)
+    if (mainplugin == nullptr)
     {
-        PluginManager *p = PluginManager::GetInstance();
-        auto plugins = p->GetPlugins();
-        plugin = plugins[plugin_index];
+        auto& pluginManager = PluginManager::Instance();
+        auto plugins = pluginManager.GetPlugins();
+        if (plugins.size() > 0)
+            mainplugin = plugins[plugin_index];
     }
-    else
-        plugin = mainplugin;
 
-    if (plugin->getOutputType() == OutputType::ImageAndValues ||
-        plugin->getOutputType() == OutputType::ImagesAndValues)
-        plugin->writeHeader(saveloc);
+    if (mainplugin->getOutputType() == OutputType::ImageAndValues ||
+        mainplugin->getOutputType() == OutputType::ImagesAndValues)
+        mainplugin->writeHeader(saveloc);
 
     for (; fileidx < filelist.size(); fileidx++)
     {
@@ -105,9 +103,9 @@ void FeatureExtractorThread::run()
         if (inp.channels() == 3)
             cvtColor(inp, inp, COLOR_BGR2RGB);
 
-        plugin->setImage(inp, finfo.fileName());
-        plugin->execute();
-        plugin->saveOutput(saveloc, filelist[fileidx]);
+        mainplugin->setImage(inp, finfo.fileName());
+        mainplugin->execute();
+        mainplugin->saveOutput(saveloc, filelist[fileidx]);
 
         //pfunc(&config, features);
     }

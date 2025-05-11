@@ -2415,3 +2415,14 @@ void ProgressReporter::UpdateProgress(QString status)
     lblstatus->setText(status);
     pbar->setValue(pbar->value() + 1);
 }
+
+void MainWindow::wheelEvent(QWheelEvent *event)
+{
+    if (event->modifiers() & Qt::ControlModifier)
+    {
+        double factor = std::pow(1.2, event->angleDelta().y() / 120.0);
+        scaleView(factor);
+    }
+    else
+        QMainWindow::wheelEvent(event);
+}

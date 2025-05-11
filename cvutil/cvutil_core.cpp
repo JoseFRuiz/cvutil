@@ -34,9 +34,9 @@ along with cvutil; see the file COPYING.  If not, see
 
 #include "MainWindow/MainWindow.h"
 
-#include <Qt6Core/QTextCodec>
-#include <Qt6Core/QFile>
-#include <Qt6Core/QString>
+#include <QtCore/QTextCodec>
+#include <QtCore/QFile>
+#include <QtCore/QString>
 
 using namespace std;
 using namespace cv;

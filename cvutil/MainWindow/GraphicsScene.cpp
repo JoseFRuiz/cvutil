@@ -26,7 +26,7 @@ along with cvutil; see the file COPYING.  If not, see
 */
 
 //#include <ImageProcessor.h>
-#include <RoiManager.h>
+#include <RoiManager/RoiManager.h>
 #include "GraphicsScene.h"
 
 GraphicsScene::GraphicsScene(QObject* parent) : QGraphicsScene(parent)
@@ -475,4 +475,9 @@ void GraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void GraphicsScene::setViewRotation(int rot)
 {
     rotation = rot;
+}
+
+void GraphicsScene::selectedROIDimensionChanged()
+{
+    RoiManager::Instance().selectedROIDimensionChanged(true);
 }

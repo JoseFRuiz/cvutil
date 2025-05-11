@@ -130,13 +130,12 @@ C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\
 C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\PluginManager\bin\$(TargetName).dll*" /Y
-xcopy "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).lib*" /Y
-xcopy "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).exp*" /Y
-xcopy "$(OutputPath)$(TargetName).pdb" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).pdb*" /Y
-xcopy "$(ProjectDir)include\PluginInterfaces.h" "$(OutputPath)..\..\build\PluginManager\include\PluginInterfaces.h*" /Y
-xcopy "$(ProjectDir)include\PluginManager.h" "$(OutputPath)..\..\build\PluginManager\include\PluginManager.h*" /Y
-</Command>
+      <Command>%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\PluginManager\bin\$(TargetName).dll*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).lib*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).exp*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).pdb" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).pdb*" /Y
+%SystemRoot%\System32\xcopy.exe "$(ProjectDir)include\PluginInterfaces.h" "$(OutputPath)..\..\build\PluginManager\include\PluginInterfaces.h*" /Y
+%SystemRoot%\System32\xcopy.exe "$(ProjectDir)include\PluginManager.h" "$(OutputPath)..\..\build\PluginManager\include\PluginManager.h*" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -191,12 +190,11 @@ C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\
 C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\PluginManager\bin\$(TargetName).dll*" /Y
-xcopy "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).lib*" /Y
-xcopy "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).exp*" /Y
-xcopy "$(ProjectDir)include\PluginInterfaces.h" "$(OutputPath)..\..\build\PluginManager\include\PluginInterfaces.h*" /Y
-xcopy "$(ProjectDir)include\PluginManager.h" "$(OutputPath)..\..\build\PluginManager\include\PluginManager.h*" /Y
-</Command>
+      <Command>%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\PluginManager\bin\$(TargetName).dll*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).lib" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).lib*" /Y
+%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).exp" "$(OutputPath)..\..\build\PluginManager\lib\$(TargetName).exp*" /Y
+%SystemRoot%\System32\xcopy.exe "$(ProjectDir)include\PluginInterfaces.h" "$(OutputPath)..\..\build\PluginManager\include\PluginInterfaces.h*" /Y
+%SystemRoot%\System32\xcopy.exe "$(ProjectDir)include\PluginManager.h" "$(OutputPath)..\..\build\PluginManager\include\PluginManager.h*" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

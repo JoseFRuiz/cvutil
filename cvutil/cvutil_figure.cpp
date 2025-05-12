@@ -51,8 +51,8 @@ along with cvutil; see the file COPYING.  If not, see
 #include <QtCharts/QChartView>
 #include <QtCharts/QChart>
 #include <QtCore/QPoint>
-#include <QAction>
-#include <QMenu>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMenu>
 
 // QT_CHARTS_USE_NAMESPACE
 

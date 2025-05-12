@@ -65,13 +65,17 @@ class PLUGINAPI PluginManager : public QObject
 {
     Q_OBJECT
 public:
+    static PluginManager* GetInstance();
+    std::vector<QWidget*> GetPluginUIs();
+    std::vector<IPlugin*> GetPlugins();
+    std::vector<QString> ListNames();
+
     PluginManager(QObject *parent = nullptr);
     ~PluginManager();
 
     void loadPlugin(QString pluginPath);
     void unloadPlugin(QString pluginPath);
     void unloadAllPlugins();
-    std::vector<IPlugin*> getPlugins();
     IPlugin* getPlugin(QString name);
     void setPluginUI(QWidget* ui);
     QWidget* getPluginUI();

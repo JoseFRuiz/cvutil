@@ -1,6 +1,6 @@
 #include "PluginManager.h"
 #include "PluginInterfaces.h"
-#include <QtWidgets/QWidget>
+#include <Qt6Widgets/QWidget>
 #include <vector>
 #include <string>
 

@@ -1,6 +1,6 @@
 #include "PluginManager.h"
 #include "PluginInterfaces.h"
-#include <Qt6Widgets/QWidget>
+#include <QtWidgets/QWidget>
 #include <vector>
 #include <string>
 
@@ -85,5 +85,4 @@ QWidget* PluginManager::getPluginUI()
     if (!pluginUIs.empty()) {
         return pluginUIs.begin()->second;
     }
-    return nullptr;
-} 
+    return nullptr; 

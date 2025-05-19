@@ -180,8 +180,8 @@ void BatchProcessor::getfilelist(QString imgpath)
 void BatchProcessor::UpdateProgress(QString filename, int fileno)
 {
     string basename = experimental::filesystem::path(filename.toStdString()).filename().string();
-    currfile->setText(tr((basename + " (" +
-        to_string(fileno + 1) + " of " + to_string(filelist.size()) + ")").c_str()));
+    currfile->setText(QString::fromStdString(basename + " (" +
+        to_string(fileno + 1) + " of " + to_string(filelist.size()) + ")"));
     progress->setValue(fileno);
     esttime = elapsed + timer.elapsed();
     nfiles = fileno;
@@ -199,21 +199,8 @@ void BatchProcessor::workfinished()
         imgsavGroupBox->setEnabled(true);
         if (imgoptGroupBox != nullptr)
             imgoptGroupBox->setEnabled(true);
-        pause->setText("Pause");
+        imgproGroupBox->setEnabled(true);
         pause->setDisabled(true);
-
-        progress->setValue(static_cast<int>(filelist.size()));
-        currfile->setText(tr(""));
-
-        workthread->reset();
-
-        // Stop the timer
-        elapsed = 0;
-        timer.invalidate();
-
-        QTime e(0, 0);
-        timeest->setText(e.toString("hh:mm:ss"));
-
         mode = CurrentMode::Stopped;
     }
 }
@@ -754,21 +741,24 @@ void BatchProcessor::timerEvent(QTimerEvent * ev)
 
 void BatchProcessor::loadPlugins()
 {
-    auto& pluginManager = PluginManager::Instance();
-    auto pluginUIs = pluginManager.GetPluginUIs();
-    // ... rest of the function
+    auto pluginManager = PluginManager::GetInstance();
+    auto plugins = pluginManager->GetPlugins();
+    for (auto plugin : plugins) {
+        pwidgets.push_back(new ParameterListWidget(plugin));
+    }
 }
 
 void BatchProcessor::processBatch()
 {
-    auto& pluginManager = PluginManager::Instance();
-    auto plugins = pluginManager.GetPlugins();
-    // ... rest of the function
+    auto pluginManager = PluginManager::GetInstance();
+    auto plugins = pluginManager->GetPlugins();
+    for (auto plugin : plugins) {
+        plugin->process();
+    }
 }
 
-void BatchProcessor::getPluginNames()
+std::vector<QString> BatchProcessor::getPluginNames()
 {
-    auto& pluginManager = PluginManager::Instance();
-    auto pluginNames = pluginManager.ListNames();
-    // ... rest of the function
+    auto pluginManager = PluginManager::GetInstance();
+    return pluginManager->ListNames();
 }

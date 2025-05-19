@@ -46,6 +46,9 @@ class BatchProcessor : public QDialog
 
 public:
     BatchProcessor(IPlugin *plugin = nullptr, QString inputfileloc = "");
+    void loadPlugins();
+    void processBatch();
+    std::vector<QString> getPluginNames();
     
 public slots:
     void UpdateProgress(QString filename, int fileno);

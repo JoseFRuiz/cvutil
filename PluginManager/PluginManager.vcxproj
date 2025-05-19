@@ -200,7 +200,7 @@ C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\
   <ItemGroup>
     <ClCompile Include="moc_PluginInterfaces.cpp" />
     <ClCompile Include="moc_PluginManager.cpp" />
-    <ClCompile Include="PluginManager.cpp" />
+    <ClCompile Include="src\PluginManager.cpp" />
     <ClCompile Include="PluginUI\moc_ParameterListWidget.cpp" />
     <ClCompile Include="PluginUI\moc_qxtspanslider.cpp" />
     <ClCompile Include="PluginUI\moc_qxtspanslider_p.cpp" />

@@ -123,11 +123,11 @@
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
     <PreBuildEvent>
-      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)include\PluginManager.h" -o "$(ProjectDir)moc_PluginManager.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)include\PluginInterfaces.h" -o "$(ProjectDir)moc_PluginInterfaces.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\ParameterListWidget.h" -o "$(ProjectDir)PluginUI\moc_ParameterListWidget.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
+      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)include\PluginManager.h" -o "$(ProjectDir)moc_PluginManager.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)include\PluginInterfaces.h" -o "$(ProjectDir)moc_PluginInterfaces.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)PluginUI\ParameterListWidget.h" -o "$(ProjectDir)PluginUI\moc_ParameterListWidget.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)PluginUI\qxtspanslider.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\PluginManager\bin\$(TargetName).dll*" /Y
@@ -183,11 +183,11 @@ C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
     <PreBuildEvent>
-      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)include\PluginManager.h" -o "$(ProjectDir)moc_PluginManager.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)include\PluginInterfaces.h" -o "$(ProjectDir)moc_PluginInterfaces.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\ParameterListWidget.h" -o "$(ProjectDir)PluginUI\moc_ParameterListWidget.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider.cpp"
-C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)..\PluginManager\include" "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
+      <Command>C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)include\PluginManager.h" -o "$(ProjectDir)moc_PluginManager.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)include\PluginInterfaces.h" -o "$(ProjectDir)moc_PluginInterfaces.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)PluginUI\ParameterListWidget.h" -o "$(ProjectDir)PluginUI\moc_ParameterListWidget.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)PluginUI\qxtspanslider.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider.cpp"
+C:\Qt\6.9.0\msvc2022_64\bin\moc.exe -I"$(ProjectDir)include" -I"$(ProjectDir)PluginUI" "$(ProjectDir)PluginUI\qxtspanslider_p.h" -o "$(ProjectDir)PluginUI\moc_qxtspanslider_p.cpp"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>%SystemRoot%\System32\xcopy.exe "$(OutputPath)$(TargetName).dll" "$(OutputPath)..\..\build\PluginManager\bin\$(TargetName).dll*" /Y

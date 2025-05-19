@@ -28,7 +28,7 @@ std::vector<QString> PluginManager::ListNames()
 {
     std::vector<QString> names;
     for (const auto& plugin : plugins) {
-        names.push_back(plugin->getName());
+        names.push_back(QString::fromStdString(plugin->getName()));
     }
     return names;
 }

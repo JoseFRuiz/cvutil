@@ -85,4 +85,5 @@ QWidget* PluginManager::getPluginUI()
     if (!pluginUIs.empty()) {
         return pluginUIs.begin()->second;
     }
-    return nullptr; 
+    return nullptr;
+} 

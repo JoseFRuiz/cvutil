@@ -37,7 +37,7 @@ along with cvutil; see the file COPYING.  If not, see
 
 //#include <RoiManager.h>
 
-//#include "ParameterListWidget.h"
+#include "ParameterListWidget.h"
 #include "FeatureExtractorThread.h"
 
 class BatchProcessor : public QDialog

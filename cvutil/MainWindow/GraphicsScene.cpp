@@ -479,5 +479,6 @@ void GraphicsScene::setViewRotation(int rot)
 
 void GraphicsScene::selectedROIDimensionChanged()
 {
-    RoiManager::Instance().selectedROIDimensionChanged(true);
+    auto roiManager = RoiManager::GetInstance();
+    roiManager->selectedROIDimensionChanged();
 }

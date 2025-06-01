@@ -237,6 +237,7 @@ protected:
     void keyPressEvent(QKeyEvent *event);
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
+    void wheelEvent(QWheelEvent *event) override;
 
 private slots:
     //void formatchanged();
@@ -273,7 +274,7 @@ public:
     static QTextEdit *logbox;
     static bool showDebugMessages;
 
-    MainWindow();
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
     // cvutilWindow interface functions

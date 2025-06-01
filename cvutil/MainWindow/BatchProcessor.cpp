@@ -28,6 +28,8 @@ along with cvutil; see the file COPYING.  If not, see
 #include "BatchProcessor.h"
 #include <Windows.h>
 #include "../../PluginManager/include/PluginManager.h"
+#include <QtCore/QTextCodec>
+#include <QtWidgets/QAction>
 
 using namespace std;
 using namespace cv;
@@ -753,7 +755,7 @@ void BatchProcessor::processBatch()
     auto pluginManager = PluginManager::GetInstance();
     auto plugins = pluginManager->GetPlugins();
     for (auto plugin : plugins) {
-        plugin->process();
+        plugin->saveOutput(savloc, "");
     }
 }
 

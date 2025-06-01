@@ -77,12 +77,11 @@ void FeatureExtractorThread::run()
     Mat inp, out;
     IPlugin *plugin;
 
-    if (mainplugin == nullptr)
-    {
-        auto& pluginManager = PluginManager::Instance();
-        auto plugins = pluginManager.GetPlugins();
-        if (plugins.size() > 0)
-            mainplugin = plugins[plugin_index];
+    auto pluginManager = PluginManager::GetInstance();
+    auto plugins = pluginManager->GetPlugins();
+    if (plugins.size() > 0) {
+        auto plugin = plugins[plugin_index];
+        mainplugin = plugin;
     }
 
     if (mainplugin->getOutputType() == OutputType::ImageAndValues ||

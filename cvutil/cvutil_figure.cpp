@@ -59,6 +59,7 @@ along with cvutil; see the file COPYING.  If not, see
 using namespace std;
 using namespace cv;
 using namespace cvutil;
+using namespace QtCharts;
 
 int figure_impl::figure_number = 0;
 int figure_impl::default_precision = 2;
@@ -881,7 +882,7 @@ void figure_impl::hold(bool on)
 //}
 
 // TODO: Get chart based on subplot.
-QtCharts::QChart* figure_impl::getChart()
+QChart* figure_impl::getChart()
 {
     return charts.back();
 }
